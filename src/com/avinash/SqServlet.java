@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SqServlet extends HttpServlet {
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		int k = (int) req.getAttribute("k");
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	//	int k = (int) req.getAttribute("k");
+		int k= Integer.parseInt(req.getParameter("k"));
 		k = k * k;
 		PrintWriter out = res.getWriter();
 		out.println(" sq of numbers is " + k);
+		System.out.println("sq");
 	}
 }
