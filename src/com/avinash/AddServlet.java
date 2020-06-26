@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		Add.add(req, res);
-	}
+	} 
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		Add.add(req, res);
@@ -23,13 +23,16 @@ public class AddServlet extends HttpServlet {
 			int i = Integer.parseInt(req.getParameter("num1"));
 			int j = Integer.parseInt(req.getParameter("num2"));
 			int k = i + j;
-
-			req.setAttribute("k", k);
-			RequestDispatcher rd = req.getRequestDispatcher("sq");
-			/*
-			 * PrintWriter out =res.getWriter(); out.println("result is "+ k);
+			res.sendRedirect("sq?k="+k);
+			/**
+			 * req.setAttribute("k", k); 
+			 * RequestDispatcher rd = req.getRequestDispatcher("sq"); 
+			 * PrintWriter out =res.getWriter();
+			 * out.println
+			 * ("result is "+ k);
+			 * 
+			 * rd.forward(req, res);
 			 */
-			rd.forward(req, res);
 		}
 	}
 }
